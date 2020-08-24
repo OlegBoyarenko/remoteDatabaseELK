@@ -1,0 +1,36 @@
+version: '3.4'
+services:
+  app:
+    image: ellodssa/accesser-0.4:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - 2005:2005  
+#    networks:
+#      - my-net  
+      
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test1
+#    networks:
+#      - my-net
+      
+  client:
+    image: ellodssa/vaadin-client-0.2:latest
+    restart: unless-stopped
+    ports:
+       - "8080:8080"
+    depends_on:
+      - app   
+#    networks:
+#      - my-net  
+      
+#networks:
+#  my-net:

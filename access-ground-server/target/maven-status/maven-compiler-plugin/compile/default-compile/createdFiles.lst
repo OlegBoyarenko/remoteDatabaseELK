@@ -1,0 +1,4 @@
+com\access\AccessDataApplication.class
+com\access\entity\Customer.class
+com\access\repository\CustomerRepository.class
+com\access\service\CustomerService.class
